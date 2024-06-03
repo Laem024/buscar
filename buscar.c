@@ -3,86 +3,17 @@
 #include <string.h>
 #include <emscripten.h>
 
-int Secuencial(int);
-int Binario(int);
-void Burbuja(int[]);
-void Quicksort(int[]);
+// int Secuencial(int);
+// int Binario(int);
+// void Burbuja(int[]);
+// void Quicksort(int[]);
 void qs(int[], int, int);
 
-int main() {
-    int original[] = {1,2,40,10,15,36};
-    int vector[] = {};
-    int resultado;
-
-    for (int i = 0; i < 6; i++)
-    {
-        vector[i] = original[i];
-    }
-
-    printf("Secuencial\n");
-    resultado = Secuencial(2);
-
-    if(resultado > -1)
-    {
-        printf("el numero buscado se encuenta en la posicion => %d\n", resultado);
-    }else{
-        printf("el numero buscado no se encuenta en el arreglo");
-    }
-
-
-    printf("Binario\n");
-    resultado = Binario(2);
-
-    if(resultado > -1)
-    {
-        printf("el numero buscado se encuenta en la posicion => %d\n", resultado);
-    }else{
-        printf("el numero buscado no se encuenta en el arreglo");
-    }
-    
-
-    printf("Desordenado\n");
-
-    for (int i = 0; i < 6; i++)
-    {
-        printf("%d\n", vector[i]);
-    }
-
-    Burbuja(vector);  
-
-    printf("Burbuja\n");
-
-    for (int i = 0; i < 7; i++)
-    {
-        printf("%d\n", vector[i]);
-    }
-    
-    
-    
-    for (int i = 0; i < 6; i++)
-    {
-        vector[i] = original[i];
-    }
-
-    Quicksort(vector);
-
-    printf("Quicksort\n");
-
-    for (int i = 1; i < 7; i++)
-    {
-        printf("%d\n", vector[i]);
-    }
-
-
-
-    return 0;
-}
-
-//ordenamos el vector
+//Burbuja
 EMSCRIPTEN_KEEPALIVE
-void Burbuja(int vector[])
+void Burbuja()
 {
-    //int vector[]= {1,2,40,36,10,15};
+    int vector[]= {1,2,10,15,36,40};
     int tamaño = 6;
     int aux;
     for (int i = 0; i < tamaño; i++)
@@ -103,7 +34,7 @@ void Burbuja(int vector[])
 EMSCRIPTEN_KEEPALIVE
 int Secuencial(int valorBuscado)
 {
-    int vector[] = {1,2,40,36,10,15};
+    int vector[]= {1,2,10,15,36,40};
     int tamaño = 6;
 
     for (int i = 0; i < tamaño; i++)
@@ -144,10 +75,11 @@ int Binario(int dato)
     return -1;
 }
 
+//Quicksort
 EMSCRIPTEN_KEEPALIVE
-void Quicksort(int vector[])
+void Quicksort()
 {
-    //int vector[] = {1,2,40,36,10,15};
+    int vector[] = {1,2,40,36,10,15};
     int tam = 6;
 
     qs(vector, 0, tam-1);
