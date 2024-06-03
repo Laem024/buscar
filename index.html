@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar con algoritmos</title>
+
+    <!-- <script src="buscar.js"></script> -->
+</head>
+<body>
+
+    <p>Hello, WebAssembly!</p>
+
+    <!--
+    <script>
+        
+        var addNums = Module.cwrap(
+            "addNums",
+            "number",
+            ["number", "number"]
+        );
+
+        function run_wasm(){
+            var result = Module.ccall(
+                "main",
+                "number",
+                null,
+                null
+            );
+            console.log(result);
+
+            var a = document.querySelector("#a").value;
+            var b = document.querySelector("#b").value;
+
+            result = Module.ccall(
+                "addNums",
+                "number",
+                ["number", "number"],
+                [a,b]
+            );
+
+            console.log(result);
+
+            result = addNums(a, b);
+            console.log(result);
+        
+        }
+    </script>
+    -->
+
+    <!-- 
+    <script>
+        function run_wasm(){
+            WebAssembly.instantiateStreaming(
+                fetch("buscar.wasm"),
+                {}
+            ).then(result => {
+                var a = document.querySelector("#a").value;
+                var b = document.querySelector("#b").value;
+                var sum = result.instance.exports.addNums(a, b);
+
+                document.querySelector("#ret")
+                    .innerHTML += `${a} + ${b} => ${sum} <br/>`
+            })
+        }
+    </script> 
+    -->
+
+    <script src="buscar.js"></script>
+    <!-- <script>
+        function run_wasm(){
+            WebAssembly.instantiateStreaming(
+                fetch("buscar.wasm"),
+                {}
+            ).then(result => {
+                var buscado = document.querySelector("#elemento").value;
+
+            
+                var resultado = result.instance.exports.Secuencial(buscado);
+                
+                
+                console.log(resultado);
+
+                if(resultado == -1){
+                    document.querySelector("#ret")
+                        .innerHTML += `El elemento buscado no se encuentra en el arreglo<br/>`
+                }else{
+                    document.querySelector("#ret")
+                    .innerHTML += `El elemento buscado esta en la pocision => ${resultado} del arreglo<br/> El arreglo ordenado es:<br/>`;
+                }  
+            })
+        }
+    </script> -->
+    <input type="number" id="elemento">
+    <button onclick="run_wasm()">Trigger</button>
+    <p id="ret"></p>
+</body>
+</html>
